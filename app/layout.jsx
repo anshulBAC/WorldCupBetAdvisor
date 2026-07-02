@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "SGP Risk Advisor — Singapore Pools Bet Analyzer",
+  title: "World Cup 2026 — Bet Risk Advisor",
   description:
-    "Turn Singapore Pools odds into honest math: implied probability, bookmaker margin, expected value, Kelly staking and risk ratings. Session-only, no data stored.",
+    "FIFA World Cup 2026 live scores, tournament tables and news, plus honest betting math for Singapore Pools odds: implied probability, bookmaker margin, expected value, Kelly staking and risk ratings. Session-only, no data stored.",
 };
 
 export default function RootLayout({ children }) {

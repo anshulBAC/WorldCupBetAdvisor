@@ -1,8 +1,19 @@
-# Singapore Pools — Bet Risk Advisor
+# World Cup 2026 — Bet Risk Advisor
 
-A web app that turns Singapore Pools football odds into **honest math** so you can
-decide where a fixed budget (e.g. S$100) is best placed across markets like 1X2,
-Double Chance, Over/Under, BTTS, Halftime/Fulltime, First Half and Correct Score.
+A FIFA World Cup 2026–themed web app with four sections:
+
+- **Live Scores** — latest results & upcoming fixtures from TheSportsDB
+  (FIFA World Cup, season 2026; free public API, no key required)
+- **Tournament** — live group standings plus fixture tables for every official
+  stage: Group Stage, Round of 32, Round of 16, Quarter-finals, Semi-finals,
+  Third-place Play-off and the Final (fixtures bucketed by the official date
+  windows)
+- **News** — live football headlines from BBC Sport & ESPN RSS, with World Cup
+  stories pinned first
+- **Bet Advisor** — turns Singapore Pools football odds into **honest math** so
+  you can decide where a fixed budget (e.g. S$100) is best placed across markets
+  like 1X2, Double Chance, Over/Under, BTTS, Halftime/Fulltime, First Half and
+  Correct Score.
 
 > **This does not predict winners — no tool can.** Every betting market carries a
 > negative expected value on average because of the bookmaker's built-in margin.
@@ -27,12 +38,17 @@ For each selection you enter decimal odds for:
 
 ## Architecture
 
-- **Frontend:** Next.js (App Router) + React — a single dashboard page.
-- **Backend:** a stateless API route `POST /api/analyze` that runs the risk engine
-  (`lib/risk.js`). No database.
-- **Storage:** none. Your inputs live in the browser tab's `sessionStorage` and
-  are **wiped automatically when you close the tab** (the "cache that clears on
-  close" you asked for).
+- **Frontend:** Next.js (App Router) + React — a tabbed dashboard
+  (`app/page.jsx` + `components/`).
+- **Backend API routes** (all stateless, no database):
+  - `POST /api/analyze` — the betting risk engine (`lib/risk.js`)
+  - `GET /api/scores` — live results & fixtures (TheSportsDB)
+  - `GET /api/tournament` — standings + stage-bucketed fixtures
+  - `GET /api/news` — parsed RSS headlines (BBC Sport, ESPN)
+- **Storage:** none. Your analyzer inputs live in the browser tab's
+  `sessionStorage` and are **wiped automatically when you close the tab** (the
+  "cache that clears on close" you asked for). Server responses are cached
+  briefly (60s scores / 5min news) to respect the free APIs.
 
 ## Run locally
 

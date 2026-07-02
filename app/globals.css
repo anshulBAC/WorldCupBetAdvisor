@@ -495,3 +495,233 @@ textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,207
   .sel-grid .conf-head, .conf-cell { display: none; }
   .pick .num .big { font-size: 16px; }
 }
+
+/* ============================================================
+   World Cup 2026 theme (USA · Canada · México)
+   ============================================================ */
+:root {
+  --wc-green: #00a651;  /* México */
+  --wc-red: #ef3340;    /* Canada */
+  --wc-blue: #3c3b6e;   /* USA */
+  --wc-sky: #4ea1ff;
+}
+
+body {
+  background:
+    radial-gradient(900px 480px at 15% -10%, rgba(0, 166, 81, 0.14) 0%, transparent 60%),
+    radial-gradient(900px 480px at 85% -10%, rgba(239, 51, 64, 0.12) 0%, transparent 60%),
+    radial-gradient(1200px 600px at 50% -20%, #16202e 0%, var(--bg) 55%);
+}
+
+.hero { position: relative; margin-bottom: 20px; }
+.hero-stripes {
+  display: flex;
+  height: 5px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.stripe { flex: 1; }
+.s-green { background: var(--wc-green); }
+.s-red { background: var(--wc-red); }
+.s-blue { background: #5352a3; }
+
+.logo.wc {
+  background: conic-gradient(from 210deg, var(--wc-green), var(--wc-red), #5352a3, var(--wc-green));
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 18px rgba(239, 51, 64, 0.25);
+}
+.title-dim { color: var(--text-dim); font-weight: 600; }
+
+/* Section tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  padding: 10px 18px;
+  border-radius: 11px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tab:hover { color: var(--text); border-color: var(--text-faint); }
+.tab.on {
+  background: linear-gradient(140deg, rgba(0, 166, 81, 0.18), rgba(239, 51, 64, 0.14));
+  border-color: var(--wc-green);
+  color: var(--text);
+}
+.tab-ico { font-size: 15px; }
+
+/* Section headers shared by tabs */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 6px 0 4px;
+}
+.section-title {
+  font-size: 19px;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.section-actions { display: flex; align-items: center; gap: 10px; }
+.updated { font-size: 11.5px; color: var(--text-faint); }
+.btn-sm { padding: 7px 13px; font-size: 12.5px; border-radius: 8px; }
+.src-note { color: var(--text-faint); font-size: 12px; margin: 2px 0 16px; }
+.sub { font-size: 13.5px; margin: 20px 0 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+.empty { color: var(--text-faint); font-size: 13px; }
+
+/* Match cards */
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+}
+.match-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 13px 15px;
+  position: relative;
+  overflow: hidden;
+}
+.match-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--wc-green), var(--wc-red));
+}
+.mc-meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 11.5px;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+}
+.mc-status {
+  margin-left: auto;
+  font-weight: 700;
+  font-size: 10.5px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(78, 161, 255, 0.14);
+  color: var(--wc-sky);
+}
+.mc-status.ft { background: rgba(61, 220, 132, 0.14); color: var(--green); }
+.mc-teams {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  font-weight: 650;
+}
+.mc-team { flex: 1; }
+.mc-team.away { text-align: right; }
+.mc-score {
+  font-size: 17px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.mc-dash { color: var(--text-faint); font-weight: 400; }
+.mc-vs { color: var(--text-faint); font-size: 12px; font-weight: 600; }
+.mc-venue { margin-top: 7px; font-size: 11.5px; color: var(--text-faint); }
+
+/* News */
+.news-list { display: flex; flex-direction: column; gap: 10px; }
+.news-item {
+  display: block;
+  background: var(--bg-elev);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 13px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s, transform 0.1s;
+}
+.news-item:hover { border-color: var(--wc-green); transform: translateY(-1px); }
+.news-src {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--wc-sky);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+.news-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--wc-red); }
+.news-time { color: var(--text-faint); font-weight: 500; text-transform: none; letter-spacing: 0; }
+.news-title { font-size: 14.5px; font-weight: 650; line-height: 1.35; }
+.news-desc { margin-top: 5px; font-size: 12.5px; color: var(--text-dim); line-height: 1.45; }
+
+/* Standings */
+.standings th, .standings td { text-align: center; }
+.standings .team-cell { display: flex; align-items: center; gap: 8px; font-weight: 650; }
+.badge-img { width: 20px; height: 20px; object-fit: contain; }
+.standings .pts { font-weight: 800; color: var(--accent); }
+.standings tbody tr:nth-child(-n+2) td:first-child { color: var(--wc-green); font-weight: 800; }
+
+/* Stage tabs */
+.stage-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.stage-tab {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.stage-tab:hover { color: var(--text); }
+.stage-tab.on {
+  background: rgba(255, 207, 51, 0.12);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.stage-tab .count {
+  background: var(--bg-elev-2);
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+
+/* Loading skeletons */
+.skeleton-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; margin-top: 8px; }
+.skel {
+  height: 84px;
+  border-radius: 12px;
+  background: linear-gradient(100deg, var(--bg-elev) 40%, var(--bg-elev-2) 50%, var(--bg-elev) 60%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+.skel.wide { grid-column: 1 / -1; height: 64px; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+@media (max-width: 680px) {
+  .tabs { gap: 6px; }
+  .tab { padding: 9px 13px; font-size: 12.5px; }
+  .section-head { flex-wrap: wrap; }
+}
